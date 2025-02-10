@@ -48,7 +48,9 @@ def test_outdated_products_all_expired(sample_products: List[Dict[str, Any]]) ->
         ]
 
 
-def test_expiration_day_today_not_outdated(sample_products: List[Dict[str, Any]]) -> None:
+def test_expiration_day_today_not_outdated(
+    sample_products: List[Dict[str, Any]]
+) -> None:
     with patch("app.main.datetime") as mock_datetime:
         mock_datetime.date.today.return_value = datetime.date(2022, 2, 10)
         assert main.outdated_products(sample_products) == ["chicken", "duck"], (
