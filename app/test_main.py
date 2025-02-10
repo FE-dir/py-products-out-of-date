@@ -56,6 +56,8 @@ def test_expiration_day_today_not_outdated(
     with patch("app.main.datetime") as mock_datetime:
         mock_datetime.date.today.return_value = datetime.date(
             2022, 2, 10)
-        assert main.outdated_products(sample_products) == ["chicken", "duck"], (
-            "Product with expiration date equal to today should NOT be outdated."
+        assert main.outdated_products(
+            sample_products) == ["chicken", "duck"], (
+            "Product with expiration date equal "
+            "to today should NOT be outdated."
         )
